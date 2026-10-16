@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Crocodile Bar &amp; Grill Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Kanit:wght@300;400;500&family=Caveat+Brush&display=swap">
+<style>
+/* Layout: single dark "night terrace" column, sticky tab bar, promo cards with photo + price stamp, then a ruled snack list */
+:root{
+  --night:#0d1117; --panel:#161c24; --line:#2a313b; --cream:#f3ead8; --muted:#a7a091;
+  --gold:#d9a441; --gold-soft:#f0c46a; --pitch:#1f6b45;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Kanit","Noto Sans Thai",system-ui,sans-serif;
+  --script:"Caveat Brush","Comic Sans MS",cursive;
+  color-scheme:dark;
+}
+html,body{background:var(--night);color:var(--cream)}
+body{font-family:var(--body);font-weight:300;font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+.wrap{max-width:560px;margin:0 auto;padding-block:28px 40px}
+header{text-align:center;display:grid;gap:4px;padding-block:8px 18px}
+.venue{font-family:var(--display);font-weight:800;letter-spacing:.32em;font-size:15px;color:var(--cream);text-transform:uppercase}
+.venue small{display:block;letter-spacing:.4em;font-size:11px;color:var(--muted);font-family:var(--body);font-weight:400}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(46px,13vw,68px);line-height:.9;margin:10px 0 0;text-transform:uppercase;text-wrap:balance}
+h1 em{display:block;font-family:var(--script);font-style:normal;color:var(--gold);font-size:.62em;text-transform:none;line-height:1.1;font-weight:400}
+.lede{color:var(--muted);font-size:13px;margin:6px 0 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--night);display:flex;gap:8px;padding-block:10px;border-bottom:1px solid var(--line)}
+nav a{flex:1;text-align:center;text-decoration:none;color:var(--cream);border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:500;font-size:14px}
+nav a:hover,nav a:focus-visible{border-color:var(--gold);color:var(--gold-soft);outline:none}
+section{padding-top:26px;scroll-margin-top:70px}
+h2{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+h2 span{font-family:var(--body);font-weight:400;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted)}
+.promos{display:grid;gap:16px;margin-top:14px}
+.promo{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid}
+.promo img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;max-width:100%}
+.promo .body{padding:16px 18px 18px;display:grid;gap:6px;min-width:0}
+.kicker{font-family:var(--script);color:var(--gold);font-size:24px;line-height:1}
+.deal{font-family:var(--display);font-weight:900;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.price{font-family:var(--display);font-weight:800;font-size:24px;color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.price small{font-size:15px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+.promo ul{margin:4px 0 0;padding-left:18px;display:grid;gap:2px}
+.promo li::marker{color:var(--gold)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.meta span{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--muted)}
+.food-hero{margin-top:14px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.food-hero img{width:100%;display:block;max-width:100%}
+.list{margin-top:10px;display:grid}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.item h3{margin:0;font-weight:500;font-size:16px;min-width:0}
+.item .p{font-family:var(--display);font-weight:800;font-size:22px;color:var(--gold-soft);font-variant-numeric:tabular-nums;grid-row:1/3;grid-column:2;align-self:center}
+.item p{margin:0;color:var(--muted);font-size:13.5px;min-width:0}
+.tag{display:inline-block;margin-left:6px;font-size:11px;font-weight:500;background:var(--pitch);color:var(--cream);border-radius:4px;padding:1px 6px;vertical-align:2px}
+footer{margin-top:28px;color:var(--muted);font-size:12.5px;text-align:center;display:grid;gap:4px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="venue">Crocodile<small>Bar &amp; Grill</small></div>
+    <h1>Football<em>Under the Stars</em></h1>
+    <p class="lede">Snacks &amp; Sharing · Beverage Promotions</p>
+  </header>
+
+  <nav aria-label="Menu sections">
+    <a href="#drinks">Drinks</a>
+    <a href="#snacks">Snacks</a>
+  </nav>
+
+  <section id="drinks">
+    <h2>Beverage Promotions</h2>
+    <div class="promos">
+      <article class="promo">
+        <img src="img/party.jpg" alt="Party set with mini liquor bottles, mixers, snacks and ice bucket">
+        <div class="body">
+          <div class="kicker">Day Delight</div>
+          <div class="deal">Party Set</div>
+          <div class="price">990.- <small>THB / SET</small></div>
+          <ul>
+            <li>1 Mini bottle of liquor</li>
+            <li>3 Mixers</li>
+            <li>1 Homemade snack</li>
+            <li>1 Slice of lime or orange</li>
+            <li>1 Bucket of ice</li>
+          </ul>
+        </div>
+      </article>
+      <article class="promo">
+        <img src="img/wine.jpg" alt="Little Things red and white wine bottles">
+        <div class="body">
+          <div class="kicker">Little Things</div>
+          <div class="deal">Buy 1 Get 1 Free</div>
+          <div class="price">2,300.- <small>THB / BOTTLE</small></div>
+          <p style="margin:0">Little Things Cabernet Sauvignon, Australia<br>Little Things Chardonnay, Australia</p>
+        </div>
+      </article>
+      <article class="promo">
+        <img src="img/beer.jpg" alt="Two glasses of Chalawan Pale Ale">
+        <div class="body">
+          <div class="kicker">Chalawan Beer</div>
+          <div class="deal">Buy 2 Get 1 Free</div>
+          <div class="price">280.- <small>THB / GLASS</small></div>
+          <div class="meta"><span>American Pale Ale (APA)</span><span>ABV 4.7%</span><span>Phuket, Thailand</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="snacks">
+    <h2>Snacks &amp; Sharing</h2>
+    <div class="food-hero"><img src="img/food.jpg" alt="Sharing platter with wings, nachos, onion rings, fries and popcorn"></div>
+    <div class="list">
+      <div class="item"><h3>Flavored Popcorn</h3><span class="p">150</span><p>Sea Salt / Cheese / Spicy BBQ</p></div>
+      <div class="item"><h3>Loaded Nachos</h3><span class="p">290</span><p>Tortilla chips, melted cheese, salsa and jalapeños</p></div>
+      <div class="item"><h3>Crispy Chicken Wings</h3><span class="p">320</span><p>6 pieces, BBQ or spicy glaze</p></div>
+      <div class="item"><h3>Seasoned French Fries</h3><span class="p">220</span><p>Choice of Sea Salt, Cheese or Truffle</p></div>
+      <div class="item"><h3>Football Sharing Platter<span class="tag">2–3 pax</span></h3><span class="p">690</span><p>Chicken wings, fries, onion rings, nachos and 2 dips</p></div>
+      <div class="item"><h3>Football Party Platter<span class="tag">4–6 pax</span></h3><span class="p">1,190</span><p>Chicken wings, chicken nuggets, fries, onion rings, nachos and 3 dips</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>All prices in Thai Baht</div>
+    <div>Snack prices are food only; beverages not included.</div>
+    <div>Please order with our team</div>
+  </footer>
+</div>
+</body>
+</html>
